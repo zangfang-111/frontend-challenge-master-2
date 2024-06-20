@@ -1,0 +1,124 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@next/next/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "prettier",
+    "prettier/prettier",
+    "plugin:jest/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "prettier", "jest"],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "globals": {
+    "ga": true,
+    "JSX": true
+  },
+  "rules": {
+    // Temporarily turning this off here globally to then enable in overrides for only ts files. In the future js files should be removed
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "import/extensions": [
+      "error",
+      "never",
+      {
+        "fixture": "always",
+        "gql": "always",
+        "png": "always",
+        "gif": "always",
+        "scss": "always",
+        "svg": "always",
+        "types": "always",
+        "json": "always"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.js",
+          "**/*.test.jsx",
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "**/stories.js",
+          "jest.setup.js"
+        ]
+      }
+    ],
+    "import/no-unresolved": 0,
+    "jest/expect-expect": [
+      "error",
+      {
+        "assertFunctionNames": ["expect", "expectToThrow"]
+      }
+    ],
+    "jest/prefer-to-have-length": 2,
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "aspects": ["invalidHref", "preferButton"],
+        "components": ["NextLink"],
+        "specialLink": ["hrefLeft", "hrefRight"]
+      }
+    ],
+    "@typescript-eslint/consistent-type-imports": [
+      2,
+      {
+        "prefer": "type-imports",
+        "disallowTypeAnnotations": true
+      }
+    ],
+    "jsx-a11y/label-has-for": 0,
+    "no-console": [
+      "warn",
+      {
+        "allow": ["warn", "error"]
+      }
+    ],
+    "no-unused-vars": "off",
+    "no-use-before-define": "off",
+    "no-underscore-dangle": ["error", { "allow": ["__typename"] }],
+    "operator-linebreak": [
+      "error",
+      "after",
+      {
+        "overrides": {
+          ":": "before",
+          "?": "before"
+        }
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".jsx", ".tsx"]
+      }
+    ],
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-props-no-spreading": 0,
+    // suppress errors for missing 'import React' in files
+    // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+    "react/react-in-jsx-scope": 0,
+    "react/require-default-props": 0,
+    "camelcase": 0
+  },
+  "overrides": [
+    {
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": ["error"]
+      }
+    }
+  ],
+  "settings": {
+    "import/resolver": "webpack"
+  }
+}

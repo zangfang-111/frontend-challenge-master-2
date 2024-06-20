@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-inter;
+  }
+}
+@layer components {
+  .sc-table--header:not(:first-child) {
+    @apply px-2;
+  }
+  .tag-tooltip-top {
+    top: calc(3.5rem - 0.7rem);
+  }
+  .info-tooltip-right {
+    left: calc(3.5rem - 1rem);
+  }
+  .sortable-item {
+    pointer-events: auto !important;
+  }
+
+  .spinner {
+    position: relative;
+  }
+
+  .spinner::before, .spinner::after {
+    content: ' ';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 10px;
+  }
+
+  .spinner::before {
+    top: 2px;
+    left: 3px;
+  }
+
+  .spinner::after {
+    top: 2px;
+    right: 3px;
+  }
+}
